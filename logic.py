@@ -41,7 +41,7 @@ class DB_Manager:
         res = self.__select_data(sql, (telegramm_id,))
         if not res:
             sql = "INSERT INTO users (telegramm_id, class) VALUES (?,?)"
-            self.__executemany(self, sql, (telegramm_id, class_name))
+            self.__executemany(sql, (telegramm_id, class_name))
             return True
         return False
 
