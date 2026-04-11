@@ -41,13 +41,13 @@ class DB_Manager:
         res = self.__select_data(sql, (telegramm_id,))
         if not res:
             sql = "INSERT INTO users (telegramm_id, class) VALUES (?,?)"
-            self.__executemany(sql, (telegramm_id, class_name))
+            self.__executemany(sql, ((telegramm_id, class_name),))
             return True
         return False
 
     def add_lessen(self,weekend,number_lessen,name_lessen,time_start,time_end,class_name):
             sql = "INSERT INTO lessen (weekend,number_lessen,name_lessen,time_start,time_end,class) VALUES (?, ?, ?, ?, ?, ?)"
-            self.__executemany(self, sql, (weekend,number_lessen,name_lessen,time_start,time_end,class_name))
+            self.__executemany(sql, (weekend,number_lessen,name_lessen,time_start,time_end,class_name))
             return True
     
 if __name__ == '__main__':
