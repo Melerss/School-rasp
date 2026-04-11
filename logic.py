@@ -38,7 +38,7 @@ class DB_Manager:
             return cur.fetchall()
     def add_user(self, telegramm_id, class_name):
         sql = "select * FROM users WHERE telegramm_id = ?"
-        res = self.__select_data(sql, telegramm_id)
+        res = self.__select_data(sql, (telegramm_id,))
         if not res:
             sql = "INSERT INTO users (telegramm_id, class) VALUES (?,?)"
             self.__executemany(self, sql, (telegramm_id, class_name))
